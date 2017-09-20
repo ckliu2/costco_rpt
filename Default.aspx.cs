@@ -143,7 +143,9 @@ public partial class _Default : System.Web.UI.Page
                     report.Load(rptFile);                    
                     report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
                     report.SetParameterValue("id", Request["id"] );                                                                     
-                 break;             
+                 break;   
+                 
+                          
                 
             }
            
