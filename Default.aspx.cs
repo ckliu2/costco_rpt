@@ -152,6 +152,13 @@ public partial class _Default : System.Web.UI.Page
                     report.SetParameterValue("id", Request["quotedPrice"] );
                     saveDisk1(report, "QuotedPriceLine-"+ Request["quotedPrice"]+"-"+randomId); 
                 break;
+                
+                 case 15:
+                    rptFile = this.Server.MapPath("rpt/PrintPage.rpt");
+                    report.Load(rptFile);                    
+                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
+                    report.SetParameterValue("id", Request["id"] );
+                break; 
                  
                           
                 
