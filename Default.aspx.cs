@@ -10,7 +10,7 @@ using System.Configuration;
 
 public partial class _Default : System.Web.UI.Page
 {
-	 string onlinePDF="D:\\IIS\\ImageDB_RPT\\onlinepdf\\";
+	 string onlinePDF="C:\\IIS\\ImageDB_RPT\\onlinepdf\\";
 	
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -159,7 +159,22 @@ public partial class _Default : System.Web.UI.Page
                     report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
                     report.SetParameterValue("id", Request["id"] );
                 break; 
-                 
+                
+                 case 16:
+                    rptFile = this.Server.MapPath("rpt/applicationForConstruction1.rpt");
+                    report.Load(rptFile);                    
+                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
+                    report.SetParameterValue("id", Request["id"] );
+                    saveDisk1(report,Request["randomId"] ); 
+                break;
+                
+                
+                case 17:
+                    rptFile = this.Server.MapPath("rpt/quotedPriceCustomerDpt.rpt");
+                    report.Load(rptFile);                    
+                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
+                    report.SetParameterValue("ids", Request["ids"] );
+                break;
                           
                 
             }
