@@ -213,6 +213,15 @@ public partial class _Default : System.Web.UI.Page
                     report.Load(rptFile);                    
                     report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
                 break;
+                
+                case 23:
+                    rptFile = this.Server.MapPath("rpt/ConstructionQuery.rpt");
+                    report.Load(rptFile);               
+                    report.SetParameterValue("startDate", Request["startDate"] );
+                    report.SetParameterValue("endDate", Request["endDate"] );
+                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
+                break;
+                
                           
                 
             }
