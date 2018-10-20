@@ -175,6 +175,44 @@ public partial class _Default : System.Web.UI.Page
                     report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
                     report.SetParameterValue("ids", Request["ids"] );
                 break;
+                
+                case 18:
+                    rptFile = this.Server.MapPath("rpt/StaffPerformace.rpt");
+                    report.Load(rptFile);                    
+                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
+                    report.SetParameterValue("date", Request["date"] );
+                break;                
+                
+                case 19:
+                    rptFile = this.Server.MapPath("rpt/ProductionCapacity.rpt");
+                    report.Load(rptFile);                    
+                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
+                break;
+                
+                case 20:
+                    rptFile = this.Server.MapPath("rpt/ProductionCapacity1.rpt");
+                    report.Load(rptFile);                    
+                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
+                    report.SetParameterValue("start", Request["start"] );
+                    report.SetParameterValue("end", Request["end"] );
+                    saveDisk1(report,Request["randomId"] );
+                break;
+                
+                case 21:
+                    rptFile = this.Server.MapPath("rpt/ProductionCapacity2.rpt");
+                    report.Load(rptFile);                    
+                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
+                    report.SetParameterValue("start", Request["start"] );
+                    report.SetParameterValue("end", Request["end"] );
+                    report.SetParameterValue("member", Request["member"] );
+                    report.SetParameterValue("groupId", Request["groupId"] );
+                break;
+                
+                case 22:
+                    rptFile = this.Server.MapPath("rpt/CHCrementVerification.rpt");
+                    report.Load(rptFile);                    
+                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
+                break;
                           
                 
             }
