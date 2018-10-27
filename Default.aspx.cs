@@ -222,6 +222,12 @@ public partial class _Default : System.Web.UI.Page
                     report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
                 break;
                 
+                case 24:
+                    rptFile = this.Server.MapPath("rpt/ConstructionQueryIds.rpt");
+                    report.Load(rptFile);               
+                    report.SetParameterValue("ids", Request["ids"] );
+                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
+                break;
                           
                 
             }
