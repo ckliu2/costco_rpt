@@ -45,12 +45,11 @@ public partial class _Default : System.Web.UI.Page
                     saveDisk1(report, "QuotedPrice-"+ Request["quotedPrice"]+"-"+randomId); 
                 break;
                 
-                case 2:
+                case 2:  
                     rptFile = this.Server.MapPath("rpt/PrintPurchaseLable.rpt");
                     report.Load(rptFile);                    
                     report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                    report.SetParameterValue("id", Request["purchase"] );
-                    //saveDisk1(report, "PrintPurchaseLable"); 
+                    report.SetParameterValue("id", Request["id"] );
                  break;
                  
                  case 3:
