@@ -223,11 +223,20 @@ public partial class _Default : System.Web.UI.Page
                 
                 case 24:
                     rptFile = this.Server.MapPath("rpt/ConstructionQueryIds.rpt");
-                    report.Load(rptFile);               
-                    report.SetParameterValue("ids", Request["ids"] );
+                    report.Load(rptFile);                    
                     report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
+                    report.SetParameterValue("ids", Request["ids"] );
+                    saveDisk1(report,Request["randomId"] );
                 break;
-                          
+                
+                case 25:
+                    rptFile = this.Server.MapPath("rpt/ShipmentOrder.rpt");
+                    report.Load(rptFile);                    
+                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
+                    report.SetParameterValue("id", Request["quotedPrice"] );
+                    saveDisk1(report, "QuotedPrice-"+ Request["quotedPrice"]+"-"+randomId); 
+                break;
+              
                 
             }
            
