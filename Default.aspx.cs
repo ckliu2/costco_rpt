@@ -38,11 +38,13 @@ public partial class _Default : System.Web.UI.Page
                 break; 
                 
                 case 1:
+               
                     rptFile = this.Server.MapPath("rpt/QuotedPrice.rpt");
                     report.Load(rptFile);                    
                     report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
                     report.SetParameterValue("id", Request["quotedPrice"] );
                     saveDisk1(report, "QuotedPrice-"+ Request["quotedPrice"]+"-"+randomId); 
+                  
                 break;
                 
                 case 2:  
@@ -236,7 +238,34 @@ public partial class _Default : System.Web.UI.Page
                     report.SetParameterValue("id", Request["quotedPrice"] );
                     saveDisk1(report, "QuotedPrice-"+ Request["quotedPrice"]+"-"+randomId); 
                 break;
+                
+                 case 26:
+                    rptFile = this.Server.MapPath("rpt/QuotedPriceWork.rpt");
+                    report.Load(rptFile);                    
+                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
+                    report.SetParameterValue("id", Request["id"] );
+                    saveDisk1(report, "QuotedPrice-"+ Request["id"]+"-"+randomId);
+                 break;
+                 
+                 case 27:
+                    rptFile = this.Server.MapPath("rpt/ValuationList.rpt");
+                    report.Load(rptFile);                    
+                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
+                    report.SetParameterValue("id", Request["id"] );
+                    saveDisk1(report, "QuotedPrice-"+ Request["id"]+"-"+randomId);
+                 break;
+                 
+                  case 28:
+                    rptFile = this.Server.MapPath("rpt/constructionFee.rpt");
+                    report.Load(rptFile);                    
+                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
+                  break;
               
+                  case 29:
+                    rptFile = this.Server.MapPath("rpt/constructionFeeAccount.rpt");
+                    report.Load(rptFile);                    
+                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
+                  break;
                 
             }
            
