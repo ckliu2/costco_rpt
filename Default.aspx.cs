@@ -266,6 +266,12 @@ public partial class _Default : System.Web.UI.Page
                     report.Load(rptFile);                    
                     report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
                   break;
+                  
+                 case 30:
+                    rptFile = this.Server.MapPath("rpt/constructionFee2.rpt");
+                    report.Load(rptFile);                    
+                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
+                  break;
                 
             }
            
