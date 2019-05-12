@@ -11,6 +11,7 @@ using System.Configuration;
 public partial class _Default : System.Web.UI.Page
 {
 	 string onlinePDF="C:\\IIS\\ImageDB_RPT\\onlinepdf\\";
+	 string constructionFeeMaster="C:\\IIS\\ImageDB_RPT\\constructionFeeMaster\\";
 	
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -273,12 +274,20 @@ public partial class _Default : System.Web.UI.Page
                     report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
                   break;
                   
-                   case 31:
+                  case 31:
                     rptFile = this.Server.MapPath("rpt/constructionFee3.rpt");
                     report.Load(rptFile);        
                     report.SetParameterValue("username", Request["username"] );            
                     report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
                   break;
+                  
+                  case 32:
+                  
+                    rptFile = this.Server.MapPath("rpt/constructionFee3.rpt");
+                    report.Load(rptFile);                    
+                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");                   
+                    saveConstructionFeeMaster(report, Server.UrlDecode( Request["fileName"] ) );
+                 break;
                 
             }
            
@@ -316,6 +325,12 @@ public partial class _Default : System.Web.UI.Page
                 //stream1.Seek(0, System.IO.SeekOrigin.Begin);                
                 SaveStreamToFile(onlinePDF+"\\"+fileName+".pdf", stream1);
     }
+    
+   public void saveConstructionFeeMaster(ReportDocument report, String fileName)
+    {                           
+                System.IO.Stream stream1 = report.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);                             
+                SaveStreamToFile(constructionFeeMaster+"\\"+fileName+".pdf", stream1);
+    } 
         
    public void saveDisk(ReportDocument report, String fileName, String fileType)
     {       
