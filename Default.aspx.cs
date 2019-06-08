@@ -276,16 +276,16 @@ public partial class _Default : System.Web.UI.Page
                   
                   case 31:
                     rptFile = this.Server.MapPath("rpt/constructionFee3.rpt");
-                    report.Load(rptFile);        
-                    report.SetParameterValue("username", Request["username"] );            
+                    report.Load(rptFile);       
+                    report.SetParameterValue("id", Request["id"] );          
                     report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
                   break;
                   
-                  case 32:
-                  
+                  case 32:                  
                     rptFile = this.Server.MapPath("rpt/constructionFee3.rpt");
                     report.Load(rptFile);                    
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");                   
+                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");    
+                    report.SetParameterValue("id", Request["id"] );               
                     saveConstructionFeeMaster(report, Server.UrlDecode( Request["fileName"] ) );
                  break;
                 
