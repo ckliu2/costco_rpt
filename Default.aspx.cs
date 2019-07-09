@@ -225,10 +225,13 @@ public partial class _Default : System.Web.UI.Page
                 break;
                 
                 case 24:
+                    
+                    
                     rptFile = this.Server.MapPath("rpt/ConstructionQueryIds.rpt");
                     report.Load(rptFile);                    
                     report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
                     report.SetParameterValue("ids", Request["ids"] );
+                    
                     saveDisk1(report,Request["randomId"] );
                 break;
                 
