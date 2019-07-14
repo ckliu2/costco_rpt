@@ -224,14 +224,11 @@ public partial class _Default : System.Web.UI.Page
                     report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
                 break;
                 
-                case 24:
-                    
-                    
+                case 24:                    
                     rptFile = this.Server.MapPath("rpt/ConstructionQueryIds.rpt");
                     report.Load(rptFile);                    
                     report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                    report.SetParameterValue("ids", Request["ids"] );
-                    
+                    report.SetParameterValue("ids", Request["ids"] );                    
                     saveDisk1(report,Request["randomId"] );
                 break;
                 
@@ -291,6 +288,16 @@ public partial class _Default : System.Web.UI.Page
                     report.SetParameterValue("id", Request["id"] );               
                     saveConstructionFeeMaster(report, Server.UrlDecode( Request["fileName"] ) );
                  break;
+                 
+                  case 33:
+                  
+                    rptFile = this.Server.MapPath("rpt/ShipmentOrder1.rpt");
+                    report.Load(rptFile);                    
+                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
+                    report.SetParameterValue("id", Request["quotedPrice"] );
+                    saveDisk1(report, "QuotedPrice-"+ Request["quotedPrice"]+"-"+randomId); 
+                   
+                break;
                 
             }
            
