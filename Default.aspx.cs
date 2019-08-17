@@ -39,13 +39,11 @@ public partial class _Default : System.Web.UI.Page
                 break; 
                 
                 case 1:
-               
                     rptFile = this.Server.MapPath("rpt/QuotedPrice.rpt");
                     report.Load(rptFile);                    
                     report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
                     report.SetParameterValue("id", Request["quotedPrice"] );
                     saveDisk1(report, "QuotedPrice-"+ Request["quotedPrice"]+"-"+randomId); 
-                  
                 break;
                 
                 case 2:  
@@ -289,14 +287,37 @@ public partial class _Default : System.Web.UI.Page
                     saveConstructionFeeMaster(report, Server.UrlDecode( Request["fileName"] ) );
                  break;
                  
-                  case 33:
-                  
+                 case 33:                  
                     rptFile = this.Server.MapPath("rpt/ShipmentOrder1.rpt");
                     report.Load(rptFile);                    
                     report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
                     report.SetParameterValue("id", Request["quotedPrice"] );
                     saveDisk1(report, "QuotedPrice-"+ Request["quotedPrice"]+"-"+randomId); 
-                   
+                 break;
+                 
+                 case 34:
+                    rptFile = this.Server.MapPath("rpt/FreightList.rpt");
+                    report.Load(rptFile);       
+                    report.SetParameterValue("startDate", Request["startDate"] );      
+                    report.SetParameterValue("endDate", Request["endDate"] );      
+                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
+                 break;
+                 
+                 case 35:
+                    rptFile = this.Server.MapPath("rpt/QuotedPrice1.rpt");
+                    report.Load(rptFile);                    
+                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
+                    report.SetParameterValue("id", Request["quotedPrice"] );
+                    saveDisk1(report, "QuotedPrice-"+ Request["quotedPrice"]+"-"+randomId); 
+                break;
+                
+                case 36:
+                    rptFile = this.Server.MapPath("rpt/ConstructionSearch.rpt");
+                    report.Load(rptFile);                    
+                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
+                    report.SetParameterValue("startDate", Request["startDate"] );
+                    report.SetParameterValue("endDate", Request["endDate"] );
+                    report.SetParameterValue("constructionId", Request["constructionId"] );                    
                 break;
                 
             }
