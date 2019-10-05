@@ -10,9 +10,8 @@ using System.Configuration;
 
 public partial class _Default : System.Web.UI.Page
 {
-	 string onlinePDF="C:\\IIS\\ImageDB_RPT\\onlinepdf\\";
-	 string constructionFeeMaster="C:\\IIS\\ImageDB_RPT\\constructionFeeMaster\\";
-	
+	 string onlinePDF="C:\\IIS\\Costco_RPT\\onlinepdf\\";
+
     protected void Page_Load(object sender, EventArgs e)
     {
         string DBIP = ConfigurationSettings.AppSettings.Get("CrystalReport-DB-IP");
@@ -27,298 +26,18 @@ public partial class _Default : System.Web.UI.Page
             CrystalReportViewer1.DisplayGroupTree  = false;
             
             int i = Convert.ToInt16(Request["rpt"]);
-            string randomId=Request["randomId"];
             switch (i)
             {
                 case 0:
-                    rptFile = this.Server.MapPath("rpt/CustomerPriceList.rpt");
+                    rptFile = this.Server.MapPath("rpt/costco.rpt");
                     report.Load(rptFile);                    
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                    report.SetParameterValue("customerId", Request["customerId"] );
-                    //saveDisk1(report, "CustomerPriceList"); 
+                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "costcoAD");
+                    report.SetParameterValue("fmYear", Request["fmYear"] );
+                    report.SetParameterValue("vendor", Request["vendor"] );
+                    saveDisk1(report, Request["fileName"]); 
                 break; 
                 
-                case 1:
-                    rptFile = this.Server.MapPath("rpt/QuotedPrice.rpt");
-                    report.Load(rptFile);                    
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                    report.SetParameterValue("id", Request["quotedPrice"] );
-                    saveDisk1(report, "QuotedPrice-"+ Request["quotedPrice"]+"-"+randomId); 
-                break;
-                
-                case 2:  
-                    rptFile = this.Server.MapPath("rpt/PrintPurchaseLable.rpt");
-                    report.Load(rptFile);                    
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                    report.SetParameterValue("id", Request["id"] );
-                 break;
-                 
-                 case 3:
-                    rptFile = this.Server.MapPath("rpt/PurchaseList.rpt");
-                    report.Load(rptFile);                    
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                    report.SetParameterValue("id", Request["id"] );                     
-                    //saveDisk1(report, "PurchaseList");    
-                 break;
-                
-                
-                case 4:
-                    rptFile = this.Server.MapPath("rpt/PurchaseList.rpt");
-                    report.Load(rptFile);                    
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                    report.SetParameterValue("id", Request["id"] );  
-                    //saveDisk1(report, "PurchaseList");               
-                 break;
-                 
-                 case 5:
-                    rptFile = this.Server.MapPath("rpt/QuotedPrice.rpt");
-                    report.Load(rptFile);                    
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                    report.SetParameterValue("id", Request["quotedPrice"] );
-                    saveDisk1(report, "QuotedPrice");
-                 break;
-
-             //示意圖A
-                 case 6:
-                    rptFile = this.Server.MapPath("rpt/Signal1.rpt");
-                    report.Load(rptFile);                    
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                    report.SetParameterValue("id", Request["id"] );                                   
-                    saveDisk1(report, "Signal1-"+ Request["id"]+"-"+randomId);
-                 break;
-                 
-
-                 case 7:
-                    rptFile = this.Server.MapPath("rpt/Completion2.rpt");
-                    report.Load(rptFile);                    
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                    report.SetParameterValue("id", Request["id"] );   
-                    saveDisk1(report, "Completion2-"+ Request["id"]+"-"+randomId);            
-                 break;
-                 
-                 case 8:
-                    rptFile = this.Server.MapPath("rpt/Completion1.rpt");
-                    report.Load(rptFile);                    
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                    report.SetParameterValue("id", Request["id"] );   
-                    saveDisk1(report, "Completion1-"+ Request["id"]+"-"+randomId);            
-                 break;
-                 
-                  case 9:
-                    rptFile = this.Server.MapPath("rpt/sticker1.rpt");
-                    report.Load(rptFile);                    
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                    report.SetParameterValue("id", Request["id"] );    
-                    saveDisk1(report, "sticker1-"+ Request["id"]+"-"+randomId);                               
-                 break;
-                 
-                 case 10:
-                    rptFile = this.Server.MapPath("rpt/sticker2.rpt");
-                    report.Load(rptFile);                    
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                    report.SetParameterValue("id", Request["id"] );     
-                    saveDisk1(report, "sticker2-"+ Request["id"]+"-"+randomId);                              
-                 break;
-                
-             //示意圖B                 
-                  case 11:
-                    rptFile = this.Server.MapPath("rpt/Signal2.rpt");
-                    report.Load(rptFile);                    
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                    report.SetParameterValue("id", Request["id"] );    
-                    saveDisk1(report, "Signal2-"+ Request["id"]+"-"+randomId);                                    
-                 break;
-                 
-                 
-                 case 12:
-                    rptFile = this.Server.MapPath("rpt/sticker3.rpt");
-                    report.Load(rptFile);                    
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                    report.SetParameterValue("id", Request["id"] );  
-                    saveDisk1(report, "sticker3-"+ Request["id"]+"-"+randomId);                                 
-                 break;
-                            
-                case 13:
-                    rptFile = this.Server.MapPath("rpt/Reaction.rpt");
-                    report.Load(rptFile);                    
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                    report.SetParameterValue("id", Request["id"] );                                                                     
-                 break;   
-                 
-                 case 14:
-                    rptFile = this.Server.MapPath("rpt/QuotedPriceItemLable.rpt");
-                    report.Load(rptFile);                    
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                    report.SetParameterValue("id", Request["quotedPrice"] );
-                    saveDisk1(report, "QuotedPriceLine-"+ Request["quotedPrice"]+"-"+randomId); 
-                break;
-                
-                 case 15:
-                    rptFile = this.Server.MapPath("rpt/PrintPage.rpt");
-                    report.Load(rptFile);                    
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                    report.SetParameterValue("id", Request["id"] );
-                break; 
-                
-                 case 16:
-                    rptFile = this.Server.MapPath("rpt/applicationForConstruction1.rpt");
-                    report.Load(rptFile);                    
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                    report.SetParameterValue("id", Request["id"] );
-                    saveDisk1(report,Request["randomId"] ); 
-                break;
-                
-                
-                case 17:
-                    rptFile = this.Server.MapPath("rpt/quotedPriceCustomerDpt.rpt");
-                    report.Load(rptFile);                    
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                    report.SetParameterValue("ids", Request["ids"] );
-                break;
-                
-                case 18:
-                    rptFile = this.Server.MapPath("rpt/StaffPerformace.rpt");
-                    report.Load(rptFile);                    
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                    report.SetParameterValue("date", Request["date"] );
-                break;                
-                
-                case 19:
-                    rptFile = this.Server.MapPath("rpt/ProductionCapacity.rpt");
-                    report.Load(rptFile);                    
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                break;
-                
-                case 20:
-                    rptFile = this.Server.MapPath("rpt/ProductionCapacity1.rpt");
-                    report.Load(rptFile);                    
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                    report.SetParameterValue("start", Request["start"] );
-                    report.SetParameterValue("end", Request["end"] );
-                    saveDisk1(report,Request["randomId"] );
-                break;
-                
-                case 21:
-                    rptFile = this.Server.MapPath("rpt/ProductionCapacity2.rpt");
-                    report.Load(rptFile);                    
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                    report.SetParameterValue("start", Request["start"] );
-                    report.SetParameterValue("end", Request["end"] );
-                    report.SetParameterValue("member", Request["member"] );
-                    report.SetParameterValue("groupId", Request["groupId"] );
-                break;
-                
-                case 22:
-                    rptFile = this.Server.MapPath("rpt/CHCrementVerification.rpt");
-                    report.Load(rptFile);                    
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                break;
-                
-                case 23:
-                    rptFile = this.Server.MapPath("rpt/ConstructionQuery.rpt");
-                    report.Load(rptFile);               
-                    report.SetParameterValue("startDate", Request["startDate"] );
-                    report.SetParameterValue("endDate", Request["endDate"] );
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                break;
-                
-                case 24:                    
-                    rptFile = this.Server.MapPath("rpt/ConstructionQueryIds.rpt");
-                    report.Load(rptFile);                    
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                    report.SetParameterValue("ids", Request["ids"] );                    
-                    saveDisk1(report,Request["randomId"] );
-                break;
-                
-                case 25:
-                    rptFile = this.Server.MapPath("rpt/ShipmentOrder.rpt");
-                    report.Load(rptFile);                    
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                    report.SetParameterValue("id", Request["quotedPrice"] );
-                    saveDisk1(report, "QuotedPrice-"+ Request["quotedPrice"]+"-"+randomId); 
-                break;
-                
-                 case 26:
-                    rptFile = this.Server.MapPath("rpt/QuotedPriceWork.rpt");
-                    report.Load(rptFile);                    
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                    report.SetParameterValue("id", Request["id"] );
-                    saveDisk1(report, "QuotedPrice-"+ Request["id"]+"-"+randomId);
-                 break;
-                 
-                 case 27:
-                    rptFile = this.Server.MapPath("rpt/ValuationList.rpt");
-                    report.Load(rptFile);                    
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                    report.SetParameterValue("id", Request["id"] );
-                    saveDisk1(report, "QuotedPrice-"+ Request["id"]+"-"+randomId);
-                 break;
-                 
-                  case 28:
-                    rptFile = this.Server.MapPath("rpt/constructionFee.rpt");
-                    report.Load(rptFile);                    
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                  break;
-              
-                  case 29:
-                    rptFile = this.Server.MapPath("rpt/constructionFeeAccount.rpt");
-                    report.Load(rptFile);                    
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                  break;
-                  
-                 case 30:
-                    rptFile = this.Server.MapPath("rpt/constructionFee2.rpt");
-                    report.Load(rptFile);                    
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                  break;
-                  
-                  case 31:
-                    rptFile = this.Server.MapPath("rpt/constructionFee3.rpt");
-                    report.Load(rptFile);       
-                    report.SetParameterValue("id", Request["id"] );          
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                  break;
-                  
-                  case 32:                  
-                    rptFile = this.Server.MapPath("rpt/constructionFee3.rpt");
-                    report.Load(rptFile);                    
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");    
-                    report.SetParameterValue("id", Request["id"] );               
-                    saveConstructionFeeMaster(report, Server.UrlDecode( Request["fileName"] ) );
-                 break;
-                 
-                 case 33:                  
-                    rptFile = this.Server.MapPath("rpt/ShipmentOrder1.rpt");
-                    report.Load(rptFile);                    
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                    report.SetParameterValue("id", Request["quotedPrice"] );
-                    saveDisk1(report, "QuotedPrice-"+ Request["quotedPrice"]+"-"+randomId); 
-                 break;
-                 
-                 case 34:
-                    rptFile = this.Server.MapPath("rpt/FreightList.rpt");
-                    report.Load(rptFile);       
-                    report.SetParameterValue("startDate", Request["startDate"] );      
-                    report.SetParameterValue("endDate", Request["endDate"] );      
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                 break;
-                 
-                 case 35:
-                    rptFile = this.Server.MapPath("rpt/QuotedPrice1.rpt");
-                    report.Load(rptFile);                    
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                    report.SetParameterValue("id", Request["quotedPrice"] );
-                    saveDisk1(report, "QuotedPrice-"+ Request["quotedPrice"]+"-"+randomId); 
-                break;
-                
-                case 36:
-                    rptFile = this.Server.MapPath("rpt/ConstructionSearch.rpt");
-                    report.Load(rptFile);                    
-                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "ImageDB");
-                    report.SetParameterValue("startDate", Request["startDate"] );
-                    report.SetParameterValue("endDate", Request["endDate"] );
-                    report.SetParameterValue("constructionId", Request["constructionId"] );                    
-                break;
+               
                 
             }
            
@@ -351,17 +70,11 @@ public partial class _Default : System.Web.UI.Page
     {       
                     
                 System.IO.Stream stream1 = report.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
-                //byte[] bytes1 = new byte[stream1.Length];
-                //stream1.Read(bytes1, 0, bytes1.Length);
-                //stream1.Seek(0, System.IO.SeekOrigin.Begin);                
+                             
                 SaveStreamToFile(onlinePDF+"\\"+fileName+".pdf", stream1);
     }
     
-   public void saveConstructionFeeMaster(ReportDocument report, String fileName)
-    {                           
-                System.IO.Stream stream1 = report.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);                             
-                SaveStreamToFile(constructionFeeMaster+"\\"+fileName+".pdf", stream1);
-    } 
+  
         
    public void saveDisk(ReportDocument report, String fileName, String fileType)
     {       
