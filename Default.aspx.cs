@@ -37,6 +37,13 @@ public partial class _Default : System.Web.UI.Page
                     saveDisk1(report, Request["fileName"]); 
                 break; 
                 
+                 case 1:
+                    rptFile = this.Server.MapPath("rpt/rentNoVendor.rpt");
+                    report.Load(rptFile);                    
+                    report.SetDatabaseLogon(UserID, UserPassword, DBIP, "costcoAD");
+                    report.SetParameterValue("store", Request["store"] );
+                break; 
+                
                
                 
             }
