@@ -80,7 +80,12 @@ public partial class _Default : System.Web.UI.Page
                              
                 SaveStreamToFile(onlinePDF+"\\"+fileName+".pdf", stream1);
     }
-    
+  
+  
+   public void saveDisk2(ReportDocument report, String fileName)
+    {       
+          report.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.Excel, onlinePDF+"\\"+fileName+".xls");
+    }  
   
         
    public void saveDisk(ReportDocument report, String fileName, String fileType)
